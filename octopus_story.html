@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octopus Systems: A Tale of Cores and Threads</title>
+    <link rel="stylesheet" href="shared-styles.css">
+</head>
+<body>
+    <h1>Octopus Systems: A Tale of Cores and Threads</h1>
+    <span>09/20/2024</span>
+    <hr/>
+    <a href="./">Go back</a>
+    
+    <p>Once upon a time, in a bustling office known as OctoCorp, there was an octopus named Bictopus. Bictopus worked diligently at a filing desk, surrounded by stacks of papers and colorful folders. However, he had a challenge: he only knew how to use 2 out of his 8 arms. He was adopted and raised by a school of fish, so he never learned the intricacies of office work.</p>
+    
+    <p>With just 2 arms, Bictopus could only manage a couple of tasks at once. He could file 60 folders in a day, sorting papers with one arm and placing them in a folder with the other. But as the pile of work grew, he became overwhelmed, realizing he was limited and falling behind.</p>
+    
+    <p>One day after work, while swimming around, he noticed a group of other octopuses playing nearby. Each was using all 8 arms skillfully. Curious, Bictopus approached them and learned they were from different parts of the ocean. His new friends taught him how to use all 8 of his arms effectively. Bictopus was amazed; with his newfound skills, he could handle many tasks at once, utilizing the full potential of his “threads.”</p>
+    
+    <p>The next day, he sorted 230 folders in a day! With all 8 arms contributing, he could sort almost 4 times as many folders as before.</p>
+
+    <p>However, Bictopus was now in an optimizing mindset. He realized he could further boost productivity by recruiting his new octopus friends to help him—so that’s exactly what he did. Each octopus represented a separate core in a CPU—distinct units capable of executing tasks independently. Each octopus (core) had 8 arms (threads) to help them work even faster!</p>
+
+    <p>Bictopus and his friends tackled different parts of the filing process. They split the earnings and managed to complete a day's work in just 2 hours. (And they left early, but shhh, don’t tell their boss!)</p>
+
+    <p>In the end, Bictopus not only excelled in his job but also made great octopus friends who taught him all about their culture! The lesson was clear: true efficiency comes from combining individual multitasking with collaborative effort, just like modern processors operate with multiple cores and threads.</p>
+    
+    <h3>Code Example: Multithreading</h3>
+    <p>In this example, Bictopus uses all 8 of his arms (threads) to sort 30 files each. Here's how it works:</p>
+
+    <code>
+<pre>
+import threading
+import time
+
+def sort_files(thread_name, num_files):
+    print(f"{thread_name} is starting to sort {num_files} files...")
+    time_taken = num_files * 0.1  # Simulating time taken to sort files (0.1 seconds per file)
+    time.sleep(time_taken)
+    print(f"{thread_name} has finished sorting {num_files} files in {time_taken:.2f} seconds.")
+
+# Create multiple threads (Bictopus' arms)
+threads = []
+start_time = time.time()  # Record the start time
+for i in range(8):
+    thread = threading.Thread(target=sort_files, args=(f"Arm-{i+1}", 30))
+    threads.append(thread)
+    thread.start()
+
+# Wait for all threads to complete
+for thread in threads:
+    thread.join()
+
+end_time = time.time()  # Record the end time
+
+total_time = end_time - start_time
+print(f"All arms have sorted their files! Total time taken: {total_time:.2f} seconds.")
+</pre>
+    </code>
+<pre><code>
+<b>Output:</b>
+All processes and threads have finished!
+Total time taken: 3.01 seconds.
+</code></pre>
+    <p>Here, Bictopus's 8 arms (threads) work in parallel to complete sorting 8 files in less time than he could with just 2 arms. Using multiple threads allows Bictopus to perform many tasks simultaneously within a single core.</p>
+    
+    <h3>Code Example: Multiprocessing with Multithreading</h3>
+    <p>Next, Bictopus recruits his octopus friends (separate processes), and each one uses 8 arms (threads) to boost productivity. Here's how this setup works:</p>
+
+    <code>
+<pre>
+import multiprocessing
+import threading
+import time
+
+# Function to simulate file sorting in each thread
+def sort_files(thread_name, num_files):
+    print(f"{thread_name} is starting to sort {num_files} files...")
+    time_taken = num_files * 0.1  # Simulate time taken (0.1 seconds per file)
+    time.sleep(time_taken)
+    print(f"{thread_name} has finished sorting {num_files} files in {time_taken:.2f} seconds.")
+
+# Function for each process to spawn 8 threads
+def process_with_threads(process_name):
+    threads = []
+    for i in range(8):  # Each process creates 8 threads
+        thread = threading.Thread(target=sort_files, args=(f"{process_name}-Arm-{i+1}", 30))
+        threads.append(thread)
+        thread.start()
+
+    for thread in threads:
+        thread.join()
+
+if __name__ == '__main__':
+    start_time = time.time()  # Record the start time
+
+    # Create 4 processes, each process will have 8 threads
+    processes = []
+    for i in range(4):  # Create 4 processes
+        process = multiprocessing.Process(target=process_with_threads, args=(f"Octopus-{i+1}",))
+        processes.append(process)
+        process.start()
+
+    # Wait for all processes to complete
+    for process in processes:
+        process.join()
+
+    end_time = time.time()  # Record the end time
+
+    total_time = end_time - start_time
+    print(f"All processes and threads have finished! Total time taken: {total_time:.2f} seconds.")
+</pre>
+    </code>
+<pre><code>
+<b>Output:</b>
+All processes and threads have finished! Total time taken: 3.14 seconds.
+Total time taken: 3.14 seconds.
+</code></pre>        
+
+    <p>In this example, each octopus (process) spawns 8 threads (arms), enabling maximum parallelism across multiple CPU cores. By leveraging both multiprocessing and multithreading, Bictopus and his octopus friends sort 64 files altogether, taking about the same time as Bictopus sorting 8 files himself!</p>
+
+    <h3>Conclusion</h3>
+    <p>As demonstrated in these examples, true efficiency comes from combining individual multitasking (threads) with collaborative efforts (multiple processes). This is exactly how modern processors work to maximize performance. Whether you're sorting files like Bictopus or optimizing code, look for parallelism anywhere you can!</p>
+</body>
+</html>

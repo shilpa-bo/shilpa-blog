@@ -1,0 +1,17 @@
+Octupus Systems: A Tale of Cores and Threads
+
+Once upon a time, in a bustling office known as OctoCorp, there was an octopus named Bictopus. Bictopus worked diligently at a filing desk, surrounded by stacks of papers and colorful folders. However, he had a challenge: he only knew how to use 2 out of his 8 arms. He was adopted and raised by a school of fish, so he never learned the intricacies of office work.
+
+With just 2 arms, Bictopus could only manage a couple of tasks at once. He could file 60 folders in a day, sorting papers with one arm and placing them in a folder with the other. But as the pile of work grew, he became overwhelmed, realizing he was limited and falling behind.
+
+One day after work, while swimming around, he noticed a group of other octopuses playing nearby. Each was using all 8 arms skillfully. Curious, Bictopus approached them and learned they were from different parts of the ocean. His new friends taught him how to use all 8 of his arms effectively. Bictopus was amazed; with his newfound skills, he could handle many tasks at once, utilizing the full potential of his “threads.”
+
+The next day, he sorted 230 folders in a day! With all 8 arms contributing, he could sort almost 4 times as many folders as before.
+
+However, Bictopus was now in an optimizing mindset. He realized he could further boost productivity by recruiting his new octopus friends to help him—so that’s exactly what he did. Each octopus represented a separate core in a CPU—distinct units capable of executing tasks independently. Each octopus (core) had 8 arms (threads) to help them work even faster!
+
+Bictopus and his friends tackled different parts of the filing process. They split the earnings and managed to complete a day's work in just 2 hours. (And they left early, but shhh, don’t tell their boss!)
+
+In the end, Bictopus not only excelled in his job but also made great octopus friends who taught him all about their culture! The lesson was clear: true efficiency comes from combining individual multitasking with collaborative effort, just like modern processors operate with multiple cores and threads.
+
+So, look for parallelism anywhere you can!
